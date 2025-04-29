@@ -2,56 +2,33 @@
 
 ## Exercise 1
 
-### Assignment
+Configure a network like shown in the image below. Use permanent configuration and a consistent host alias for each machine.
 
-### Setup
+| Machine | IP address |
+|---------|------------|
+|@h1|192.168.1.1|
+|@h2|192.168.1.2|
+|@h3|192.168.1.3|
 
-Configure a network with the topology shown on the image above.
-* Each host has only 1 NIC
-* IP address are assigned for each host
-* The interconnection element is a switch
+Test the network executing `arping` and `ping` from `@h1` to `@h2` and executing `tcpdump` on `@h2` and `@h3`.
 
-Configure the network using the `/etc/network/interfaces` file and indicate machine names into the `/etc/hosts` using consistent names.
-
-### Connection test
-
-Execute the following commands and check the responses.
-
-```
-@h1
-
-arping 192.168.1.2
-ping 192.168.1.2
-
-arping h2
-ping h2
-```
-
-### Switch test
-
-Launch the following command:
-
-```
-@h1
-
-arping 192.168.1.2
-```
-
-Verify the network traffic using `tcpdump` command on @h3 and @h2.
-
-### ARP cache
-
-Launch the following command:
-
-```
-@h2
-
-tcpdump arp
-```
-
-### Solution
+![net-01](./images/network-01.png)
 
 ## Exercise 2
+
+Configure a network like shown in the image below. Use permanent configuration and a consistent host alias for each machine.
+
+| Machine | IP address |
+|---------|------------|
+|@h1|192.168.1.1|
+|@h2|192.168.1.2|
+|@h3|192.168.1.3|
+
+Test the network executing `arping` and `ping` from `@h1` to `@h2` and executing `tcpdump` on `@h2` and `@h3`.
+
+Wich differences from the previous exercise?
+
+![net-02](./images/network-02.png)
 
 ## Exercise 3
 
