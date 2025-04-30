@@ -68,7 +68,7 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 
 Eseguire il comando `arping` da ciascun nodo verso ciascuno degli altri nodi/interfaccie e verificare ciò che accade.
 
-> [Soluzione](./exercise-05.md)
+> [Soluzione](./exercise-04.md)
 
 ## Exercise 5
 
