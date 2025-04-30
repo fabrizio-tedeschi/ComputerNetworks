@@ -3,6 +3,10 @@
 ### Configurazione
 
 1. Si connettono i dispositivi usando cavi diretti come mostrato in figura. Per connettere gli switch si utilizza un *cavo cross*.
+
+>[!NOTE]
+> Collegando gli switch con un cavo cross si è creata anche una comunicazione diretta fra `@h1` e `@h3`. Non si verificano problemi di comunicazione fra gli host a differenza dell'esercizio precedente in cui `@h1` e `@h3` erano separati poichè connessi a switch dfferenti.
+
 2. Si configura l'indirizo IP di ogni host usando il file `/etc/network/interfaces`. 
 
 ```bash
@@ -67,8 +71,18 @@ tcpdump -i eth0 arp
 tcpdump arp
 ```
 
-* Sia il nodo `@h2_eth0` che il nodo `@h3` ricevono le richieste ARP ma solamente `@h2_eth0` invia una risposta.
-* La scheda di rete `@h2_eth1` non riceve traffico ma la sua risposta viene gestita da `@h2_eth0`.
+* Sia il nodo `@h2_eth0` che il nodo `@h3` ricevono le richieste ARP ma solamente `@h2` invia risposte.
+* A causa della nuova topologia di rete sia la scheda `@h2_eth0` che la scheda `@h2_eth1` ricevono richieste ARP ed entrambe inviano una risposta. Ciò si evince lanciando:
+
+```bash
+# @h2
+tcpdump -i eth1 arp
+```
 
 >[!NOTE]
-> Collegando gli switch con un cavo cross si è creata anche una comunicazione diretta fra `@h1` e `@h3`. Non si verificano problemi di comunicazione fra gli host a differenza dell'esercizio precedente in cui `@h1` e `@h3` erano separati poichè connessi a switch dfferenti.
+> La duplicazione delle risposte avviene per il seguente motivo:
+> * `@h2_eth0` risponde alla richiesta poichè è il dispositivo direttamente interessato
+> * `@h2_eth1` risponde alla richiesta per conto di `@h2_eth0` poichè è sullo stesso dispositivo
+>
+> Si noti che **ogni scheda di rete risponde con il proprio indirizzo MAC**. Ciò dipende dalla politica di risposta del sistema operativo!
+> Nel caso della rete Marionnet è come se una stessa scheda di rete potesse gestire due indirizi IP.
