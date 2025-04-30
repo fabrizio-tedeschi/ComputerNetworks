@@ -32,14 +32,45 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 
 Testare la rete lanciando `arping` e `ping` da `@h1` verso `@h2` ed eseguendo `tcpdump` su `@h2` e su `@h3`.
 
-* Quali sono le differenze rispetto all'esercizio precedente?
+Quali sono le differenze rispetto all'esercizio precedente?
 
 > [Soluzione](./exercise-02.md)
 
 ## Exercise 3
 
+Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Impostare una configurazione automatica per le schede di rete e scegliere alias per gli host consistenti su ciascuna macchina.
+
+![net-03](./images/network-03.png)
+
+| Machine | NIC | IP address |
+|---------|-----|------------|
+|@h1|eth0|192.168.1.10|
+|@h2|eth0|192.168.1.20|
+|@h2|eth1|192.168.1.21|
+|@h3|eth0|192.168.1.30|
+
 ## Exercise 4
+
+Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Impostare una configurazione automatica per le schede di rete e scegliere alias per gli host consistenti su ciascuna macchina. Si noti l'interconnessione dei due switch con cavo cross.
+
+![net-04](./images/network-04.png)
+
+| Machine | NIC | IP address |
+|---------|-----|------------|
+|@h1|eth0|192.168.1.10|
+|@h2|eth0|192.168.1.20|
+|@h2|eth1|192.168.1.21|
+|@h3|eth0|192.168.1.30|
 
 ## Exercise 5
 
-## Exercise 6
+Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Non utilizzare file di configurazione ma appositi comandi come ad esempio il comando `ip`.
+
+![net-05](./images/network-05.png)
+
+| Machine | NIC | IP address |
+|---------|-----|------------|
+|@h1|eth0|10.0.0.1|
+|@h2|eth0|10.0.0.2|
+|@h3|eth0|10.0.0.3|
+|@h4|eth0|10.0.0.4|
