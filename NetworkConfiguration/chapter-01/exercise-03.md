@@ -2,7 +2,7 @@
 
 ### Configurazione
 
-1. Si connettono i dispositivi usando cavi diretti come mostrato in figura
+1. Si connettono i dispositivi usando cavi diretti come mostrato in figura.
 2. Si configura l'indirizo IP di ogni host usando il file `/etc/network/interfaces`. 
 
 ```bash
@@ -26,6 +26,18 @@ iface eth1 inet static
 192.168.1.21 h2_eth1        # Seconda interfaccia
 
 192.168.1.30 h3
+
+# @h2 /etc/hosts
+
+192.168.1.10 h1
+192.168.1.30 h3
+
+# @h3 /etc/hosts
+
+192.168.1.21 h2_eth1 h2     # Prima interfaccia
+192.168.1.20 h2_eth0        # Seconda interfaccia
+
+192.168.1.10 h1
 ```
 
 ### Test
@@ -73,4 +85,4 @@ tcpdump -i eth1 arp
 * La scheda `eth0` risponde alla ARP request inviando l'indirizzo MAC della scheda `eth1` poichè esse sono sulla stessa macchina.
 
 >[!NOTE]
-> Eseguendo `arping` da `@h2` verso `@h3` non si ottengono risposte poichè viene usata di default la prima interfaccia attivata ossia `eth0`. Per risolvere il probema è necessario forzare l'utilizzo di `eth1` attraverso `arping -i eth1 192.168.1.30`.
+> Eseguendo `arping` da `@h2` verso `@h3` non si ottengono risposte poichè **viene usata di default la prima interfaccia attivata** ossia `eth0`. Per risolvere il probema è necessario forzare l'utilizzo di `eth1` attraverso `arping -i eth1 192.168.1.30`.

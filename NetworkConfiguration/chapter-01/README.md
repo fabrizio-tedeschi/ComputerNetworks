@@ -16,7 +16,7 @@ Testare la rete lanciando `arping` e `ping` da `@h1` verso `@h2` ed eseguendo `t
 
 Cosa si deduce osservando il traffico sui vari nodi? Si è ottenuto un risultato coerente con il funzionamento di uno switch?
 
-> [Solution](./exercise-01.md)
+> [Soluzione](./exercise-01.md)
 
 ## Esercizio 2
 
@@ -49,6 +49,10 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 |@h2|eth1|192.168.1.21|
 |@h3|eth0|192.168.1.30|
 
+Eseguire il comando `arping` da ciascun nodo verso ciascuno degli altri nodi/interfaccie e verificare ciò che accade.
+
+> [Soluzione](./exercise-03.md)
+
 ## Exercise 4
 
 Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Impostare una configurazione automatica per le schede di rete e scegliere alias per gli host consistenti su ciascuna macchina. Si noti l'interconnessione dei due switch con cavo cross.
@@ -62,6 +66,10 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 |@h2|eth1|192.168.1.21|
 |@h3|eth0|192.168.1.30|
 
+Eseguire il comando `arping` da ciascun nodo verso ciascuno degli altri nodi/interfaccie e verificare ciò che accade.
+
+> [Soluzione](./exercise-05.md)
+
 ## Exercise 5
 
 Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Non utilizzare file di configurazione ma appositi comandi come ad esempio il comando `ip`.
@@ -74,3 +82,5 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 |@h2|eth0|10.0.0.2|
 |@h3|eth0|10.0.0.3|
 |@h4|eth0|10.0.0.4|
+
+> [Soluzione](./exercise-05.md)
