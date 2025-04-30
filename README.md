@@ -1,16 +1,15 @@
 # ComputerNetworks
 
-This repository contains some exercises and solution from the Computer Networks exam.
+La repository contiene alcuni esercizi e soluzioni guidate tratti dal corso universitario *Computer Networks*.
 
 ### Introduction
 
-The computer network exam is divided in two different parts:
+L'esame di *Computer Networks* è diviso in due parti:
 
-* [Network configuration](./networkConfiguration/): manage host and switch settings and set-up a computer network. Work with the H2N and the IP level of TCP/IP stack.
-* [Socket programming](./socketProgramming/): use programming languages to execute system calls and operate with the operating system kernel. Work with the transport level of TCP/IP stack.
+* [Network configuration](./networkConfiguration/): configurare host e switch in modo da ottenre una rete funzionante. Lavorare con livelli H2N e IP dello stack TCP/IP.
+* [Socket programming](./socketProgramming/): usare linguaggi di programmazione per eseguire primitive di sistema e interagire con il kernel Linux. Lavorare con il livello trasporto dello stack TCP/IP.
 
 ### Softwares
 
-* [GNS3](https://docs.gns3.com/docs/getting-started/installation/linux): network simulator (recommended)
-* [Marionnet](https://www.marionnet.org/site/index.php/en/): network simulator (exam simulator, difficult installation, not recommended).
+* [Marionnet](https://www.marionnet.org/site/index.php/en/): simulatore di rete
 * [Wireshark](https://www.wireshark.org/): network protocol analyzer
