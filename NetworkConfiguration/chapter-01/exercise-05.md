@@ -22,4 +22,4 @@ ip link set dev eth0 up                 # Attiva l'interfaccia di rete
 1. Si lancia il comando `ping` da `@h1` verso `@h3` e si verifica lo scambio request/response.
 2. Lanciando il comando `tcpdump` sugli altri host è possibile vedere il traffico della rete, in particolare:
     * I nodi coinvolti da `ping` mostrano request/response
-    * I nodi non coinvolti ricevono solo la AROP request, poi lo switch indirizza il traffico verso la destinazione corretta
+    * I nodi non coinvolti ricevono solo la ARP request, poi lo switch indirizza il traffico verso la destinazione corretta
