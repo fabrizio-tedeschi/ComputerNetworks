@@ -2,7 +2,7 @@
 
 ### Configurazione delle macchine
 
-1. Si impostano le configurazioni dell'interfaccia di rete di chiascun host come mostrato di seguito ed in modo consistente fra i diversi host.
+1. Si impostano le configurazioni dell'interfaccia di rete di ciascun host come mostrato di seguito ed in modo consistente fra i diversi host.
 
 ```bash
 # @h1 /etc/network/interfaces
