@@ -60,14 +60,14 @@ iface eth1 inet static
 3. Si avviano tutte le interfacce di rete dei vari host eseguendo il comando:
 
 ```bash
-# @h1, @h2, @h3, @h4
+# @h1, @h4, @gw12, @gw23
 ifup -a
 ```
 
 In caso di errori nei file `etc/network/interfaces` si possono spegnere le interaccie di rete lanciando il comando:
 
 ```bash
-# @h1, @h2, @h3, @h4
+# @h1, @h4, @gw12, @gw23
 ifdown --force <dev>
 ```
 
