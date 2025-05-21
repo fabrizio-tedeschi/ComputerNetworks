@@ -85,3 +85,30 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 Obiettivo dell'esercizio è che tutti i nodi possano comunicare fra di loro.
 
 > [Soluzione](./exercise-04.md)
+
+---
+
+>[!WARNING]
+> Gli esercizi seguenti combinano problemi di rotuing e VLAN. Prima di svolgere i seguenti esercizi assicurarsi di aver svolto gli [esercizi sulle VLAN](../chapter-02/).
+
+## Esercizio 5
+
+Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Utilizzare una configurazione permanente e alias degli host consistenti su ciascuna macchina.
+
+![net-05](./images/network-05.png)
+
+| Machine | NIC | IP address |
+|---------|-----|------------|
+|@h1|eth0|192.168.1.1|
+|@h2|eth0|192.168.1.254|
+|@h2|eth1|192.168.2.254|
+|@h3|eth0|192.168.2.1|
+
+* Ogni host ha una sola scheda di rete
+* Si considerano due sottoreti `192.168.1.0/24` e `192.168.2.0/24`
+* L'host `@h2` deve essere raggiungibile da due indirizzi IP
+* Le VLAN devono essere configurate in modo da tenere le due subnet separate
+
+Obiettivo dell'esercizio è che tutti i nodi possano comunicare fra di loro.
+
+> [Soluzione](./exercise-05.md)
