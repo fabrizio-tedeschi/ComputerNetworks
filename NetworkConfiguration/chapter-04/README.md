@@ -100,8 +100,7 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 | Machine | NIC | IP address |
 |---------|-----|------------|
 |@h1|eth0|192.168.1.1|
-|@h2|eth0|192.168.1.254|
-|@h2|eth1|192.168.2.254|
+|@h2|eth0|192.168.{1,2}.254|
 |@h3|eth0|192.168.2.1|
 
 * Ogni host ha una sola scheda di rete
