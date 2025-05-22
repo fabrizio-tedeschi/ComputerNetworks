@@ -124,14 +124,37 @@ Configurare una rete con topologia mostrata in figura e utilizzando gli indirizz
 |@h1|eth0|192.168.1.1|
 |@h2|eth0.10|192.168.1.254|
 |@h2|eth0.20|192.168.2.254|
+|@h2|eth1|1.1.1.254|
 |@h3|eth0|192.168.2.1|
 |@ext|eth0|1.1.1.1|
 
 * La rete è configurata come la precedente ma è stato aggiunto un host
-* `@h2` possiede 2 shcede di rete
+* `@h2` possiede 2 schede di rete
 * Il collegamento fra `@h2` e `@ext` è un *cavo cross*
 * Non utilizzare regole di default nella configurazione di `@ext`
 
 Obiettivo dell'esercizio è che tutti i nodi possano comunicare fra di loro.
 
 > [Soluzione](./exercise-06.md)
+
+## Esercizio 7
+
+Configurare una rete con topologia mostrata in figura e utilizzando gli indirizzi IP proposti in tabella. Utilizzare una configurazione permanente e alias degli host consistenti su ciascuna macchina.
+
+![net-07](./images/network-07.png)
+
+| Machine | NIC | IP address |
+|---------|-----|------------|
+|@h1|eth0|192.168.1.1|
+|@h2|eth0.10|192.168.1.254|
+|@h2|eth0.20|192.168.2.254|
+|@h2|eth0.30|2.2.2.2|
+|@h3|eth0|192.168.2.1|
+|@ext|eth0|1.1.1.1|
+
+* `@h2` possiede 1 scheda di rete
+* Non utilizzare regole di default nella configurazione di `@ext`
+
+Obiettivo dell'esercizio è che tutti i nodi possano comunicare fra di loro.
+
+> [Soluzione](./exercise-07.md)

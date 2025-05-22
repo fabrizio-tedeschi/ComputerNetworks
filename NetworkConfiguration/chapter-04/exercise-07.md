@@ -1,4 +1,4 @@
-# Esercizio 06
+# Esercizio 07
 
 ### Configurazione delle macchine
 
@@ -32,21 +32,15 @@ iface eth0.10 inet static
 auto eth0.20
 iface eth0.20 inet static
     address 192.168.2.254
-```
 
-Inoltre l'host `@h2` possiede una seconda scheda di rete:
-
-```bash
-# @h2 /etc/network/interfaces
-
-auto eth1
-iface eth1 inet static
-    address 1.1.1.254
+auto eth0.30
+iface eth0.30 inet static
+    address 2.2.2.2
     netmask 255.255.255.255
-    post-up ip route add 1.1.1.1/32 dev eth1
+    post-up ip route add 1.1.1.1/32 dev eth0.30
 ```
 
-Si configura l'host `@ext` aggiungendo le seguenti righe nel file di configurazione
+Si configura l'host `@ext` aggiungendo le seguenti righe nel file di configurazione per permettergli di conoscere i next-hop per le varie reti:
 
 ```bash
 # @ext /etc/network/interfaces
@@ -55,9 +49,9 @@ auto eth0
 iface eth0 inet static
     address 1.1.1.1
     netmask 255.255.255.255
-    post-up ip route add 1.1.1.254/32 dev eth0
-    post-up ip route add 192.168.1.0/24 via 1.1.1.254
-    post-up ip route add 192.168.2.0/24 via 1.1.1.254
+    post-up ip route add 2.2.2.2/32 dev eth0
+    post-up ip route add 192.168.1.0/24 via 2.2.2.2
+    post-up ip route add 192.168.2.0/24 via 2.2.2.2
 ```
 
 Si avviano le schede di rete con il comando:
@@ -70,8 +64,8 @@ ifup -a
 ### Configurazione dello switch
 
 Lo switch deve essere configurato per smistare correttamente il traffico verso le varie VLAN. In particolare:
-* Le porte 1 e 3 possono lavoare con *access link* poichè collegate ad una sola VLAN
-* La porta 2 deve lavorare con *trunk link* poichè gestisce traffico appartenente sia alla VLAN 10 sia alla VLAN 20 (il gateway `@h2` ha IP diversi sulle VLAN)
+* Le porte 1, 3, 4 possono lavoare con *access link* poichè collegate ad una sola VLAN
+* La porta 2 deve lavorare con *trunk link* poichè gestisce traffico appartenente alle VLAN 10, 20, 30 (il gateway `@h2` ha IP diversi sulle VLAN)
 
 Si inseriscono i seguenti comandi nel file di configurazione.
 
@@ -79,9 +73,11 @@ Si inseriscono i seguenti comandi nel file di configurazione.
 # @S1
 vlan/create 10
 vlan/create 20
+vlan/create 30
 
 port/setvlan 1 10       # Dato che h1 appartiene alla VLAN 10
 port/setvlan 3 20       # Dato che h3 appartiene alla VLAN 20
+port/setvlan 4 30       # Dato che ext appartiene alla VLAN 30
 
 vlan/addport 10 2       # Dato che h2 appartiene sia alla VLAN 10 sia alla VLAN 20
 vlan/addport 20 2
@@ -98,6 +94,9 @@ VLAN 0010
 VLAN 0020
  -- Port 0002 tagged=1 active=1 status=Forwarding
  -- Port 0003 tagged=0 active=1 status=Forwarding
+VLAN 0030
+ -- Port 0002 tagged=1 active=1 status=Forwarding
+ -- Port 0004 tagged=0 active=1 status=Forwarding
 ```
 
 ### Abilitazione di IP forwarding
@@ -116,7 +115,7 @@ Si verificano i requisiti di connettività lanciando i seguenti comandi:
 ```bash
 # @h1
 ping 192.168.2.1    # OK
-ping 1.1.1.254      # OK
+ping 2.2.2.2        # OK
 ping 1.1.1.1        # OK
 ```
 
