@@ -34,10 +34,36 @@ iface eth0.20 inet static
     address 192.168.2.254
 ```
 
+Inoltre l'host `@h2` possiede una seconda scheda di rete:
+
+```bash
+# @h2 /etc/network/interfaces
+
+auto eth1
+iface eth1 inet static
+    address 1.1.1.254
+    netmask 255.255.255.255
+    post-up ip route add 1.1.1.1/32 dev eth1
+```
+
+Si configura l'host `@ext` aggiungendo le seguenti righe nel file di configurazione
+
+```bash
+# @ext /etc/network/interfaces
+
+auto eth0
+iface eth0 inet static
+    address 1.1.1.1
+    netmask 255.255.255.255
+    post-up ip route add 1.1.1.254/32 dev eth0
+    post-up ip route add 192.168.1.0/24 via 1.1.1.254
+    post-up ip route add 192.168.2.0/24 via 1.1.1.254
+```
+
 Si avviano le schede di rete con il comando:
 
 ```bash
-# @h1, @h2, @h3
+# @h1, @h2, @h3, @ext
 ifup -a
 ```
 
@@ -46,6 +72,8 @@ ifup -a
 Lo switch deve essere configurato per smistare correttamente il traffico verso le varie VLAN. In particolare:
 * Le porte 1 e 3 possono lavoare con *access link* poichè collegate ad una sola VLAN
 * La porta 2 deve lavorare con *trunk link* poichè gestisce traffico appartenente sia alla VLAN 10 sia alla VLAN 20 (il gateway `@h2` ha IP diversi sulle VLAN)
+
+Si inseriscono i seguenti comandi nel file di configurazione.
 
 ```bash
 # @S1
@@ -88,6 +116,8 @@ Si verificano i requisiti di connettività lanciando i seguenti comandi:
 ```bash
 # @h1
 ping 192.168.2.1    # OK
+ping 1.1.1.254      # OK
+ping 1.1.1.1        # OK
 ```
 
 In caso di fallimento significa che ci sono problemi lungo la catena di inoltro, verificare la connettività con un dispositivo/VLAN per volta.
